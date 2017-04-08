@@ -1,5 +1,5 @@
 # pydfs
-Python Interface and CLI for Disk and Filesystem Utils
+Python Interface and cli for Disk and Filesystem Utils
 
 ### Requirements
 Unix/Linux Operating System
@@ -36,6 +36,7 @@ Unix/Linux Operating System
 #### Library
 
         import pydfs
+        
         df = pydfs.df()
         
         # get list of file system object
