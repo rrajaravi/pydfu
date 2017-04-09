@@ -2,10 +2,12 @@ import unittest
 
 import pydfs
 
+
 class DiskFree(unittest.TestCase):
     def get_df(self):
         df = pydfs.df()
-        self.assertIsInstance(df, pydfs.fs.Fs, msg="return data type is correct")
+        self.assertIsInstance(
+            df, pydfs.fs.Fs, msg="return data type is correct")
 
     def test_query_particulars(self):
         df = pydfs.df()
@@ -34,7 +36,8 @@ class DiskFree(unittest.TestCase):
         fs = df.query_one(size='>10g', use='<50%')
         if fs:
             # cross check
-            self.assertTrue(fs.check_size('>10g') and fs.check_use('<50%') and True)
+            self.assertTrue(fs.check_size('>10g')
+                            and fs.check_use('<50%') and True)
 
 
 class Scanner(unittest.TestCase):

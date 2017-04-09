@@ -68,8 +68,8 @@ class Fs:
         return eval("%s %s %s" % (self.size, _condition, _size))
 
     def for_print(self):
-        return [ self.name, self.size, self.used, self.avail, str(self.use) + '%', self.path ]
+        return [self.name, self.size, self.used, self.avail,
+                str(self.use) + '%', self.path]
 
     def __repr__(self):
         return self.path
-

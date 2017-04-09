@@ -33,7 +33,7 @@ class Df:
         return self._items[item]
 
     def find_by_path(self, path):
-        return filter(lambda  f: getattr(f, 'path') == path,
+        return filter(lambda f: getattr(f, 'path') == path,
                       self._items)
 
     def find_by_name(self, name):
