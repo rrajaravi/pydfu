@@ -1,4 +1,6 @@
 # pydfs
+[![Build Status](https://travis-ci.org/rrajaravi/pydfs.svg?branch=master)](https://travis-ci.org/rrajaravi/pydfs)
+
 Python Interface and cli for Disk and Filesystem Utils
 
 ### Requirements
