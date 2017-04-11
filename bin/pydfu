@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 from __future__ import print_function
 import argparse
-from pydfs.scanner import Scanner
-from pydfs import df as DiskFree
+from pydfu.scanner import Scanner
+from pydfu import df as DiskFree
 
 parser = argparse.ArgumentParser(description='Disk and FileSystem Utils')
 parser.add_argument('-s', '--scan', action='store_true', default=False)

@@ -11,14 +11,14 @@ def requirements():
 
 
 setup(
-    name='pydfs',
-    packages=['pydfs'],
+    name='pydfu',
+    packages=['pydfu'],
     version='0.1',
     long_description=readme(),
     description="Disk and File system query",
     author='rrajaravi',
     author_email='r.rajaravi@gmail.com',
-    url='https://github.com/rrajaravi/pydfs.git',
+    url='https://github.com/rrajaravi/pydfu.git',
     license="MIT",
     classifiers=[
         'Programming Language :: Python',
@@ -31,5 +31,5 @@ setup(
     ],
     install_requires=requirements(),
     test_suite="tests",
-    scripts=['bin/pydfs']
+    scripts=['bin/pydfu']
 )

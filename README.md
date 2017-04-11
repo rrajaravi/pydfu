@@ -1,5 +1,5 @@
-# pydfs
-[![Build Status](https://travis-ci.org/rrajaravi/pydfs.svg?branch=master)](https://travis-ci.org/rrajaravi/pydfs)
+# pydfu
+[![Build Status](https://travis-ci.org/rrajaravi/pydfu.svg?branch=master)](https://travis-ci.org/rrajaravi/pydfu)
 
 Python Interface and cli for Disk and Filesystem Utils
 
@@ -9,14 +9,14 @@ Unix/Linux Operating System
 ### How to Use
 #### Installation
 
-        $ git clone https://github.com/rrajaravi/pydfs.git
-        $ cd pydfs
+        $ git clone https://github.com/rrajaravi/pydfu.git
+        $ cd pydfu
         $ python setup.py install
 
 #### Command Line
 
-        $ pydfs --help
-        usage: pydfs [-h] [-s] [-d]
+        $ pydfu --help
+        usage: pydfu [-h] [-s] [-d]
 
         Disk and FileSystem Utils
 
@@ -24,7 +24,7 @@ Unix/Linux Operating System
           -h, --help  show this help message and exit
           -s, --scan
           -d, --df
-        $ pydfs --df
+        $ pydfu --df
         FileSystem    1K-blocks     Used          Avail         Use%          Mounted On    
         udev          3780128       0             3780128       0%            /dev          
         tmpfs         760264        17780         742484        3%            /run          
@@ -37,9 +37,9 @@ Unix/Linux Operating System
 
 #### Library
 
-        import pydfs
+        import pydfu
         
-        df = pydfs.df()
+        df = pydfu.df()
         
         # get list of file system object
         df.query()

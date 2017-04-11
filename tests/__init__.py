@@ -1,23 +1,23 @@
 import unittest
 
-import pydfs
+import pydfu
 
 
 class DiskFree(unittest.TestCase):
     def get_df(self):
-        df = pydfs.df()
+        df = pydfu.df()
         self.assertIsInstance(
-            df, pydfs.fs.Fs, msg="return data type is correct")
+            df, pydfu.fs.Fs, msg="return data type is correct")
 
     def test_query_particulars(self):
-        df = pydfs.df()
+        df = pydfu.df()
         fs = df[0]
         map(lambda attr: self.assertTrue(hasattr(fs, attr)),
             ['name', 'size', 'used', 'avail', 'use', 'path']
             )
 
     def test_conditional_query(self):
-        df = pydfs.df()
+        df = pydfu.df()
         fs = df.query_one(path='/')
         self.assertTrue(fs.path == '/')
 
