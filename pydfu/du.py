@@ -51,7 +51,7 @@ class DiskUsage(object):
                     name=file_name,
                     size_in_byte=size,
                     size_in_h=size_in_h,
-                    size= self.human_readable and size_in_h or size)
+                    size=self.human_readable and size_in_h or size)
                 )
 
             for _dir in dirs:
@@ -87,7 +87,7 @@ class DiskUsage(object):
         self.parse(path, **kwargs)
         self.get_size()
         for item in self.db:
-            buffer.write(str(item.size).ljust(10) + item.name +'\n')
+            buffer.write(str(item.size).ljust(10) + item.name + '\n')
         buffer.write("\nTotal Size: " + str(self.total_size))
 
         if self.stdout_write:
