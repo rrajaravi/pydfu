@@ -94,3 +94,5 @@ Unix/Linux Operating System
         '11.0 B'
 
 
+### Planned work / work in progress
+Track: https://github.com/rrajaravi/pydfu/blob/master/WORK.md
