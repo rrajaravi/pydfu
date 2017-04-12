@@ -16,15 +16,21 @@ Unix/Linux Operating System
 #### Command Line
 
         $ pydfu --help
-        usage: pydfu [-h] [-s] [-d]
+        usage: pydfu [-h] {df,du,scan} ...
 
         Disk and FileSystem Utils
 
+        positional arguments:
+          {df,du,scan}  help for subcommand
+            df          df help
+            du          du help
+            scan        scan help
+
         optional arguments:
-          -h, --help  show this help message and exit
-          -s, --scan
-          -d, --df
-        $ pydfu --df
+          -h, --help    show this help message and exit
+          
+          
+        $ pydfu df
         FileSystem    1K-blocks     Used          Avail         Use%          Mounted On    
         udev          3780128       0             3780128       0%            /dev          
         tmpfs         760264        17780         742484        3%            /run          
@@ -34,6 +40,20 @@ Unix/Linux Operating System
         tmpfs         3801300       0             3801300       0%            /sys/fs/cgroup
         vmhgfs-fuse   249414652     134421324     114993328     54%           /mnt/hgfs     
         tmpfs         760264        76            760188        1%            /run/user/1000
+        
+        $ pydfu du /tmp/suf -h
+        258.0 B   /tmp/suf/configure_os_datastage_node.xml
+        258.0 B   /tmp/suf/configure_os_db_node.xml
+        258.0 B   /tmp/suf/configure_app_datastage_node.xml
+        258.0 B   /tmp/suf/configure_app_core_svcs_node.xml
+        258.0 B   /tmp/suf/configure_app_db_node.xml
+        258.0 B   /tmp/suf/configure_os_web_node.xml
+        258.0 B   /tmp/suf/configure_os_core_svcs_node.xml
+        258.0 B   /tmp/suf/configure_app_web_node.xml
+        258.0 B   /tmp/suf/configure_app_analytics_node.xml
+        258.0 B   /tmp/suf/configure_os_analytics_node.xml
+
+        Total Size: 2.52 KB
 
 #### Library
 
@@ -55,4 +75,22 @@ Unix/Linux Operating System
         
         # query for a file system based on multiple conditions
         fs = df.query_one(size='>10g', use='<50%') 
+        
+        du = pydfu.du()
+        
+        # get list of file and directory object
+        du.query('/tmp')
+        du.total_size # get total size of /tmp 
+        
+        # access a file or directory object
+        du.query('/tmp')[0]
+        
+        # access information of a file or directory object
+        >>> du.query('/tmp')[0].name
+        '/tmp/.X0-lock'
+        >>> du.query('/tmp')[0].size
+        11
+        >>> du.query('/tmp')[0].size_in_h
+        '11.0 B'
+
 
