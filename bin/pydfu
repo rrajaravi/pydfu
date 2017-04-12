@@ -1,20 +1,46 @@
 #!/usr/bin/env python
 from __future__ import print_function
 import argparse
+import sys
+import os
 from pydfu.scanner import Scanner
 from pydfu import df as DiskFree
+from pydfu import du as DiskUsage
 
-parser = argparse.ArgumentParser(description='Disk and FileSystem Utils')
-parser.add_argument('-s', '--scan', action='store_true', default=False)
-parser.add_argument('-d', '--df', action='store_true', default=False)
+parser = argparse.ArgumentParser(description='Disk and FileSystem Utils', add_help=True)
+subparsers = parser.add_subparsers(help='help for subcommand')
+
+df_parser = subparsers.add_parser('df', help='df help', add_help=False)
+df_parser.set_defaults(command='df')
+df_parser.add_argument('-h', action='store_true', default=False)
+df_parser.add_argument('--help', action='store_true', default=False)
+
+
+du_parser = subparsers.add_parser('du', help='du help', add_help=False)
+du_parser.set_defaults(command='du')
+du_parser.add_argument('-h', action='store_true', default=False)
+du_parser.add_argument('path', nargs='*')
+du_parser.add_argument('--help', action='store_true', default=False)
+
+
+scan_parser = subparsers.add_parser('scan', help='scan help', add_help=False)
+scan_parser.set_defaults(command='scan')
+scan_parser.add_argument('-h', action='store_true', default=False)
+scan_parser.add_argument('path', nargs='*')
+scan_parser.add_argument('--help', action='store_true', default=False)
+
 
 argv = parser.parse_args()
 
-if argv.scan:
-    scanner = Scanner()
-    scanner.run()
+if len(sys.argv) == 1:
+    parser.print_help()
+    sys.exit(0)
 
-if argv.df:
+if argv.command == 'df':
+    if argv.help:
+        df_parser.print_help()
+        sys.exit(0)
+
     df = DiskFree()
     title = [ 'FileSystem', '1K-blocks', 'Used', 'Avail', 'Use%', 'Mounted On' ]
     data = [ fs.for_print() for fs in df ]
@@ -23,4 +49,25 @@ if argv.df:
     for row in data:
         print("".join(word.ljust(col_width) for word in row))
 
+if argv.command == 'du':
+    if not argv.path:
+        argv.path = [os.getcwd()]
 
+    if argv.help:
+        du_parser.print_help()
+        sys.exit(0)
+
+    du = DiskUsage()
+    [du.stdout(path, write=True, h=argv.h) for path
+      in argv.path]
+
+if argv.command == 'scan':
+    if not argv.path:
+        argv.path = [os.getcwd()]
+
+    if argv.help:
+        scan_parser.print_help()
+        sys.exit(0)
+
+    scanner = Scanner()
+    scanner.run()

@@ -20,7 +20,7 @@ def get_fs():
     return data
 
 
-class Df:
+class DiskFree:
 
     def __init__(self):
         self._items = get_fs()
